@@ -680,16 +680,20 @@ configurationRegistry.registerConfiguration({
 			default: true,
 			tags: ['experimental'],
 		},
-		['chat.statusWidget.sku']: {
-			type: 'string',
-			enum: ['free', 'anonymous'],
-			enumDescriptions: [
-				nls.localize('chat.statusWidget.sku.free', "Show status widget for free tier users."),
-				nls.localize('chat.statusWidget.sku.anonymous', "Show status widget for anonymous users.")
-			],
-			description: nls.localize('chat.statusWidget.enabled.description', "Controls which user type should see the status widget in new chat sessions when quota is exceeded."),
-			default: undefined,
+		['chat.statusWidget.anonymous']: {
+			type: 'boolean',
+			description: nls.localize('chat.statusWidget.anonymous.description', "Controls whether anonymous users see the status widget in new chat sessions when rate limited."),
+			default: false,
 			tags: ['experimental', 'advanced'],
+			experiment: {
+				mode: 'auto'
+			}
+		},
+		['chat.noAuthWidget.enabled']: {
+			type: 'boolean',
+			description: nls.localize('chat.noAuthWidget.enabled.description', "Controls whether a welcome banner is shown for anonymous users prompting them to try Copilot."),
+			default: false,
+			tags: ['experimental'],
 			experiment: {
 				mode: 'auto'
 			}
